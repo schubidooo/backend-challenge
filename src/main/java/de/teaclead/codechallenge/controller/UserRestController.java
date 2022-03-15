@@ -2,7 +2,6 @@ package de.teaclead.codechallenge.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,7 +33,6 @@ public class UserRestController {
 
   @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
   public String home() {
-
     return "Home page";
   }
 
@@ -47,8 +45,8 @@ public class UserRestController {
 
   @RequestMapping(value = "", method = RequestMethod.GET)
   @ResponseStatus(HttpStatus.OK)
-  public User get(@RequestParam(value = "userId", required = true) UUID userId) {
-    Optional<User> optionalUser = this.userRepository.findById(userId);
+  public User get(@RequestParam(value = "mailAddress", required = true) String mailAddress) {
+    Optional<User> optionalUser = this.userRepository.findById(mailAddress);
     if (optionalUser.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
@@ -57,14 +55,14 @@ public class UserRestController {
 
   @RequestMapping(value = "", method = RequestMethod.DELETE)
   @ResponseStatus(HttpStatus.OK)
-  public void delete(@RequestParam(value = "userId", required = true) UUID userId) {
-    this.userRepository.deleteById(userId);
+  public void delete(@RequestParam(value = "mailAddress", required = true) String mailAddress) {
+    this.userRepository.deleteById(mailAddress);
   }
 
   @RequestMapping(value = "", method = RequestMethod.PUT)
   @ResponseStatus(HttpStatus.OK)
   public User put(@RequestBody User userDto) {
-    Optional<User> optionalUser = this.userRepository.findById(userDto.getUuid());
+    Optional<User> optionalUser = this.userRepository.findById(userDto.getMailAddress());
     if (optionalUser.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }

@@ -1,6 +1,5 @@
 package de.teaclead.codechallenge.entity;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,24 +10,20 @@ import javax.persistence.Table;
 public class User {
   @Id
   @Column
-  private UUID uuid;
+  private String mailAddress;
   @Column
   private String firstname;
   @Column
   private String surname;
-  @Column
-  private String mailAddress;
 
   public User() {
-    this.uuid = UUID.randomUUID();
+
   }
 
-  public UUID getUuid() {
-    return uuid;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
+  public User(String mailAddress, String firstname, String surname) {
+    this.mailAddress = mailAddress;
+    this.firstname = firstname;
+    this.surname = surname;
   }
 
   public String getFirstname() {
