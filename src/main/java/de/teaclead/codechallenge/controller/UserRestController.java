@@ -70,11 +70,10 @@ public class UserRestController {
     return optionalUser.get();
   }
 
-  @RequestMapping(value = "/findByFirstName", method = RequestMethod.GET)
+  @RequestMapping(value = "/filter", method = RequestMethod.GET)
   @ResponseStatus(HttpStatus.OK)
-  public List<User> getByFirstName(
-      @RequestParam(value = "firstName", required = true) String firstName) {
-    List<User> findByNames = this.userRepository.findByFirstName(firstName);
+  public List<User> filter(@RequestParam(value = "firstname", required = true) String firstname) {
+    List<User> findByNames = this.userRepository.findByFirstname(firstname);
     return findByNames;
   }
 }

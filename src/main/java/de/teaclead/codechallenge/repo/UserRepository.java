@@ -11,5 +11,5 @@ import de.teaclead.codechallenge.entity.User;
 public interface UserRepository extends JpaRepository<User, String> {
 
   @Query("SELECT u FROM users u WHERE u.firstname = :firstname ")
-  List<User> findByFirstName(@Param("firstname") String firstname);
+  List<User> findByFirstname(@Param("firstname") String firstname);
 }
