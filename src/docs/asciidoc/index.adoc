@@ -1,0 +1,92 @@
+= Teclead Backend-Challenge API
+paul wolpers;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[user]]
+== User
+
+[[GET_USERS]]
+=== GET /user/filter?firstname=
+
+Retrieve users by firstname
+
+==== success
+
+.request
+include::{snippets}/should-return-users-by-firstname/http-request.adoc[]
+
+.response
+include::{snippets}/should-return-users-by-firstname/http-response.adoc[]
+
+[[GET_USER]]
+=== GET /user?mailAddress=
+
+Retrieve a user by its mailAddress
+
+==== success
+
+.request
+include::{snippets}/should-return-user/http-request.adoc[]
+
+.response
+include::{snippets}/should-return-user/http-response.adoc[]
+
+==== not found
+
+.request
+include::{snippets}/should-return-user-not-found/http-request.adoc[]
+
+.response
+include::{snippets}/should-return-user-not-found/http-response.adoc[]
+
+[[POST_USER]]
+=== POST /user
+
+Create a user
+
+==== created
+
+.request
+include::{snippets}/should-create-user/http-request.adoc[]
+
+.response
+include::{snippets}/should-create-user/http-response.adoc[]
+
+[[PUT_USER]]
+=== PUT /user
+
+Update a user
+
+==== success
+
+.request
+include::{snippets}/should-update-user/http-request.adoc[]
+
+.response
+include::{snippets}/should-update-user/http-response.adoc[]
+
+==== not found
+
+.request
+include::{snippets}/should-return-user-not-found-on-update/http-request.adoc[]
+
+.response
+include::{snippets}/should-return-user-not-found-on-update/http-response.adoc[]
+
+[[DELETE_USER]]
+=== DELETE /user?mailAddress=
+
+Delete a user
+
+==== success
+
+.request
+include::{snippets}/should-delete-user/http-request.adoc[]
+
+.response
+include::{snippets}/should-delete-user/http-response.adoc[]
